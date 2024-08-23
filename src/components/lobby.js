@@ -39,16 +39,21 @@ export default function Lobby() {
     return (
         <div className="lobby-container">
             <h1>Lobby</h1>
-            <button onClick={handleCreateRoom}>Create Room</button>
-            <button onClick={handleReturnNickname}>Return to Nickname</button>
-            <ul>
+            <div className="lobby-buttons">
+                <button onClick={handleCreateRoom} className="create-room-button">Create Room</button>
+                <button onClick={handleReturnNickname} className="return-button">Return to Nickname</button>
+            </div>
+            <ul className="rooms-list">
                 {rooms.map((room) => (
-                    <li key={room.id}>
-                        {room.name} - Players: {room.players.length}/2
-                        <button onClick={() => handleJoinRoom(room.id)}>Join</button>
+                    <li key={room.id} className="room-item">
+                <span className="room-info">
+                    {room.name} - Players: {room.players.length}/2
+                </span>
+                        <button onClick={() => handleJoinRoom(room.id)} className="join-room-button">Join</button>
                     </li>
                 ))}
             </ul>
         </div>
+
     );
 }

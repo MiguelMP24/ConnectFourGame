@@ -18,8 +18,11 @@ export default function NicknameInput() {
                 type="text"
                 value={nickname}
                 onChange={(e) => setNickname(e.target.value)}
+                className="nickname-input"
+                placeholder="Type your nickname..."
             />
-            <button onClick={handleSubmit}>Join Lobby</button>
+            <button onClick={handleSubmit} className="join-button">Join Lobby</button>
         </div>
+
     );
 }

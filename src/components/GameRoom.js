@@ -39,25 +39,34 @@ export default function GameRoom() {
     return (
         <div className="game-room-container">
             <h1>Game Room: {roomId}</h1>
-            <div className="players-container">
-                <h2>Players</h2>
-                <ul>
-                    {players.map((player, index) => (
-                        <li key={index}>{player}</li>
-                    ))}
-                </ul>
+
+            <div className="players-spectators-container">
+                <div className="players-container">
+                    <h2>Players</h2>
+                    <ul>
+                        {players.map((player, index) => (
+                            <li key={index} className="player-item">{player}</li>
+                        ))}
+                    </ul>
+                </div>
+
+                <div className="spectators-container">
+                    <h2>Spectators</h2>
+                    <ul>
+                        {spectators.map((spectator, index) => (
+                            <li key={index} className="spectator-item">{spectator}</li>
+                        ))}
+                    </ul>
+                </div>
             </div>
-            <div className="spectators-container">
-                <h2>Spectators</h2>
-                <ul>
-                    {spectators.map((spectator, index) => (
-                        <li key={index}>{spectator}</li>
-                    ))}
-                </ul>
+
+            <ConnectFourBoard players={players} spectators={spectators}/>
+
+            <div className="buttons-container">
+                <button onClick={handleLeaveRoom} className="action-button">Leave Room</button>
+                <button onClick={handleReturnNickname} className="action-button">Return to Nickname</button>
             </div>
-            <ConnectFourBoard players={players} spectators={spectators} />
-            <button onClick={handleLeaveRoom}>Leave Room</button>
-            <button onClick={handleReturnNickname}>Return to Nickname</button>
         </div>
+
     );
 }
